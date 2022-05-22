@@ -1,0 +1,13 @@
+.select-list__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 150px;
+  column-gap: 15px;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.select-list {
+  padding: 3px;
+  outline: none;
+  border: none;
+}
