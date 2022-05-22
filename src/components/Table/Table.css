@@ -1,0 +1,12 @@
+.table {
+  width: 50vw;
+  border-spacing: 5px 2px;
+}
+
+.table__head {
+  background-color: yellow;
+}
+
+.table__head-item {
+  padding: 10px;
+}
