@@ -1,0 +1,7 @@
+.table__cell {
+  padding: 5px;
+}
+
+.table__tr > .table__cell:not(:nth-child(2)) {
+  text-align: center;
+}
