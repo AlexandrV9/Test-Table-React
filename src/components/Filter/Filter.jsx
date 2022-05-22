@@ -10,7 +10,7 @@ import {
 import './Filter.css';
 
 
-const Filter = ({ dataCell }) => {
+const Filter = () => {
   return (
     <div className='filter'>
       <p className='filter__title'>Фильтр</p>
@@ -22,6 +22,7 @@ const Filter = ({ dataCell }) => {
           <input className='filter__input-text' type="text" placeholder='значение...'/>
         </div>
         <button type='submit' className='filter__button-submit'>Отфильтровать</button>
+        <button className='filter__button-reset'>Показать всё (Сброс фильтра)</button>
       </form>
     </div>
   )
