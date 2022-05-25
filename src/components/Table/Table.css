@@ -10,3 +10,8 @@
 .table__head-item {
   padding: 10px;
 }
+
+.table__row {
+  /* display: grid; */
+  /* grid-template-columns: 136px 255px 168px 166px; */
+}
