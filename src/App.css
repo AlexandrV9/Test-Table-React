@@ -3,4 +3,5 @@
   display: grid;
   grid-template-columns: 1fr 400px;
   grid-template-rows: 1fr 50px;
+  height: 558px;
 }
