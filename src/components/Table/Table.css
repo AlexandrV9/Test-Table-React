@@ -1,6 +1,7 @@
 .table {
   width: 50vw;
   border-spacing: 5px 2px;
+  height: 120px;
 }
 
 .table__head {
@@ -11,7 +12,12 @@
   padding: 10px;
 }
 
-.table__row {
-  /* display: grid; */
-  /* grid-template-columns: 136px 255px 168px 166px; */
+.table__td-nothing-found {
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
+
+.table__preloader {
+  margin: 0 auto;
 }
