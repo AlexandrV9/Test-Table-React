@@ -11,7 +11,7 @@ function App() {
 
   const numElementOnPage = 7;
 
-  const [isLoading, setIsLoading]= useState(false);
+  // const [isLoading, setIsLoading]= useState(false);
   const [sortedData, setSortedData] = useState([]);
   const [numberPages, setNumberPages] = useState(0);
   const [page, setPage] = useState(1);
@@ -23,18 +23,15 @@ function App() {
   const handleAdditionalFiltration = (item = page) => {
     switch (parseInt(optionСondition)) {
       case 0: 
-      console.log('=')
         submitFilterRequest('=', item);
         break;
       case 1: 
         submitFilterRequest('', item);
         break;
       case 2:
-        console.log('>')
         submitFilterRequest('>', item);
         break;
       case 3:
-        console.log('<')
         submitFilterRequest('<', item);
         break;
       default:
@@ -43,7 +40,7 @@ function App() {
   }
 
   const submitFilterRequest = async (optionСondition, item) => {
-    setIsLoading(true)
+    // setIsLoading(true)
     let numPage = item;
     const sendData = {
       column: optionColumn,
@@ -54,7 +51,7 @@ function App() {
     if(filterDataLength.data.length === 0) {
       setSortedData([]);
       setNumberPages(0);
-      setIsLoading(false);
+      // setIsLoading(false);
     } else {
       const allElements = filterDataLength.data.length;
       const pages = Math.ceil(allElements / numElementOnPage);
@@ -67,7 +64,7 @@ function App() {
       const { data } = await Axios.post(`http://localhost:3001/api/post/filterData/numElementOnPage/${numElementOnPage}/numPage/${numPage}`,sendData);
       setNumberPages(pages);
       setSortedData(data);
-      setIsLoading(false);
+      // setIsLoading(false);
     }
   }
 
@@ -105,7 +102,7 @@ function App() {
     <main className='main-content'>
       <Table 
         sortedData={sortedData} 
-        isLoading={isLoading}
+        // isLoading={isLoading}
       />
       <Pagination 
         numberPages={numberPages} 

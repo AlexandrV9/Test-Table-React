@@ -27,7 +27,6 @@ const Filter = ({
   };
 
   const handleFiltration = (event) => {
-    console.log('НАЖАЛИ НА КНОПКУ ФИЛЬТРАЦИИ!!!!!!!')
     event.preventDefault();
     handleAdditionalFiltration();
   };

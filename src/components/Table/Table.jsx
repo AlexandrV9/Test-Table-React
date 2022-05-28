@@ -10,8 +10,6 @@ const Table = ({
   isLoading 
 }) => {
 
-  console.log(isLoading)
-
   const createTableRowMarkup = () => {
     return sortedData.map((item, index) => <TableRow key={index} dataItem={item}/>);
   }
@@ -24,21 +22,21 @@ const Table = ({
     );
   }
 
-  const createPreloaderMarkup = () => {
-    return (
-      <tr className='table__row-preloader'>
-        <td colSpan="4" className='table__td-preloader'>
-          <ReactLoading 
-            type={'bars'} 
-            color={''} 
-            height={80} 
-            width={80} 
-            className='table__preloader'
-          />
-        </td>
-      </tr>
-    )
-  }
+  // const createPreloaderMarkup = () => {
+  //   return (
+  //     <tr className='table__row-preloader'>
+  //       <td colSpan="4" className='table__td-preloader'>
+  //         <ReactLoading 
+  //           type={'bars'} 
+  //           color={''} 
+  //           height={80} 
+  //           width={80} 
+  //           className='table__preloader'
+  //         />
+  //       </td>
+  //     </tr>
+  //   )
+  // }
 
   return (
     <table className='table'>
@@ -52,7 +50,7 @@ const Table = ({
       </thead>
       <tbody className='table__body'>
       { 
-        isLoading ? createPreloaderMarkup() : ((sortedData && sortedData.length > 0) ? 
+        ((sortedData && sortedData.length > 0) ? 
         createTableRowMarkup() : createNothingFoundMarkup() )
       }
       </tbody>
