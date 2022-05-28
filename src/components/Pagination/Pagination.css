@@ -49,8 +49,20 @@
   background-color: aquamarine;
 }
 
-.pagination__button-prev:hover,
-.pagination__button-next:hover {
+
+.pagination__button {
+  border: none;
+}
+
+.pagination__button:disabled {
+  opacity: 0.5;
+}
+
+.pagination__button:disabled:hover {
+  cursor: not-allowed;
+}
+
+.pagination__button:hover {
   background-color: rgb(220, 220, 220);
   cursor: pointer;
 }

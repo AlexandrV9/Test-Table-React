@@ -12,13 +12,13 @@ const SelectList = ({
 }) => {
   
   const handleSelectOption = (event) => { 
-    if(event.target.name === 'Выбор колонки' && !(parseInt(event.target.value) === 0)) {
+    if(event.target.name === 'Выбор колонки' && !((event.target.value) === "name")) {
       if(/\D+/.test(changeValue)){
         setChangeValue(0)
       }
     }
-    setOption(parseInt(event.target.value));
-    onClickOption(parseInt(event.target.value), dataSelect.name);
+    setOption(event.target.value);
+    onClickOption(event.target.value, dataSelect.name);
   }
   
   return (
@@ -35,7 +35,7 @@ const SelectList = ({
           return (
             <option
               key={index}  
-              value={index} 
+              value={option.value} 
               disabled={!option.isAvailable} 
             >
               {option.name}
