@@ -7,6 +7,8 @@ import Filter from './components/Filter/Filter';
 import Table from './components/Table/Table';
 import Pagination from './components/Pagination/Pagination';
 
+import { getFilteredData } from './utils/api';
+
 function App() {
 
   const numElementOnPage = 7;
@@ -21,51 +23,48 @@ function App() {
   const [changeValue, setChangeValue] = useState("");
 
   const handleAdditionalFiltration = (item = page) => {
+    const transmittedData = { 
+      page, 
+      numElementOnPage, 
+      optionColumn, 
+      changeValue,   
+      setSortedData,
+      setNumberPages,
+      setPage
+    }
     switch (parseInt(optionСondition)) {
       case 0: 
-        submitFilterRequest('=', item);
+        getFilteredData('=', item, transmittedData);
         break;
       case 1: 
-        submitFilterRequest('', item);
+        getFilteredData('', item, transmittedData);
         break;
       case 2:
-        submitFilterRequest('>', item);
+        getFilteredData('>', item, transmittedData);
         break;
       case 3:
-        submitFilterRequest('<', item);
+        getFilteredData('<', item, transmittedData);
         break;
       default:
         break;
     }
   }
 
-  const submitFilterRequest = async (optionСondition, item) => {
-    // setIsLoading(true)
-    let numPage = item;
-    const sendData = {
-      column: optionColumn,
-      operation: optionСondition,
-      value: changeValue
+  const handleResetButtonClick = (event) => {
+    const transmittedData = { 
+      page: 1, 
+      numElementOnPage, 
+      optionColumn: "name", 
+      changeValue: '',   
+      setSortedData,
+      setNumberPages,
+      setPage
     }
-    const filterDataLength = await Axios.post('http://localhost:3001/api/get/filterDataLength', sendData);
-    if(filterDataLength.data.length === 0) {
-      setSortedData([]);
-      setNumberPages(0);
-      // setIsLoading(false);
-    } else {
-      const allElements = filterDataLength.data.length;
-      const pages = Math.ceil(allElements / numElementOnPage);
-      if(page > pages) {
-        numPage = pages;
-        setPage(pages);
-      } else {
-        setPage(item);
-      }
-      const { data } = await Axios.post(`http://localhost:3001/api/post/filterData/numElementOnPage/${numElementOnPage}/numPage/${numPage}`,sendData);
-      setNumberPages(pages);
-      setSortedData(data);
-      // setIsLoading(false);
-    }
+    event.preventDefault();
+    setOptionColumn('name');
+    setOptionСondition(1);
+    setChangeValue('');
+    getFilteredData('=', 1, transmittedData)
   }
 
   const handleClickPrev = () => {
@@ -120,6 +119,7 @@ function App() {
         changeValue={changeValue}
         setChangeValue={setChangeValue}
         handleAdditionalFiltration={handleAdditionalFiltration}
+        handleResetButtonClick={handleResetButtonClick}
       />
     </main>
   );
