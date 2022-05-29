@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import SelectList from "./SelectList/SelectList";
+import { getFilteredData } from '../../utils/api';
 
 import {
   dataSelectListForColumn,
@@ -17,6 +18,7 @@ const Filter = ({
   setOptionColumn,
   setOptionСondition,
   handleAdditionalFiltration,
+  handleResetButtonClick,
 }) => {
 
   const [selectСondition, setSelectСondition] = useState(dataSelectListForСondition);
@@ -30,6 +32,8 @@ const Filter = ({
     event.preventDefault();
     handleAdditionalFiltration();
   };
+
+
 
   const handleClickOption = (option) => {
     switch (option) {
@@ -124,7 +128,7 @@ const Filter = ({
           <button type="submit" className="filter__button-submit">
             Отфильтровать
           </button>
-          <button type="button" className="filter__button-reset">
+          <button type="button" className="filter__button-reset" onClick={handleResetButtonClick}>
             Показать всё (Сброс фильтра)
           </button>
         </fieldset>

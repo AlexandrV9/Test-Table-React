@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+<h1 align="center">Тестовое задание от компании Каналсервис</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+<h3 align="center">ТЗ (техническое задание):</h3>
 
-In the project directory, you can run:
+Находится по следующей ссылке: https://kanalservis.notion.site/kanalservis/React-e07c83de444142dc8e743a2712934113
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<h3 align="center">Список используемых технологий:</h3>
 
-### `npm test`
+1) **React** - фреймворк для разработки пользовательских интерфейсов;
+2) **MySQL** - система управления базами данных (СУБД);
+3) **Axios** - JavaScript-библиотека для выполнения либо HTTP-запросов в Node.js.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<h3 align="center">Особенность данного проекта</h3>
 
-### `npm run build`
+Данный проект предназначени для фильтрации данных, пришедших от сервера.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Его особенность заключается в том, что прежде чем выполнять запрос к БД через сервер, отправится запрос на получения количества элементов удолетворяющих условиям фильтра. Если ничего не найдётся, то основной запрос на получения данных не отправится на сервер. Если же есть какие-то данные, то отправится основной второй запрос на получения массива данных, требующий дополнительного времени обработки.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Причём в приложении не загружаются сразу все данные (т.к. в БД их может быть очень много), а заграужаются малыми порциями. Т.к. в проекте есть пагинация, то одна страница - это один запрос на получение 7 элементов, вторая страница - это запрос на получение следующих 7 элементов.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Засчёт всего вышеперечисленного приложение работает очень быстро.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<h3 align="center">Алгоритм запуска приложения:</h3>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Для работы приложения, вам необходимо установить следующие инструменты:
+    - [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) - приложение для визуального проектирования баз данных;
+    - [MySQL Community Server](https://dev.mysql.com/downloads/mysql/) - сервер для работы с SQL запросами;
+2. Запустить MySQL Community Server;
+3. Открыть MySQL Workbench:
+    - Создать БД с названием TABLEDataBase;
+    - Создать в этой БД таблицу с названием travel;
+    - Добавить в эту схему следующие поля:
+      * id - INT AI PK;
+      * name - TEXT;
+      * date - TEXT;
+      * number - FLOAT;
+      * distance - FLOAT;
+    - После этого необходимо добавить в эту таблицу тестовые данные, любым удобным для вас способом (желательно, чтобы их было больше 60)
+4. Далее производим установку и запуск сервер, который находится в другом репозитории. Скоро тут появится ссылка на него;
+5. После этого скачиваем код данного репозитория;
+6. Устанавливаем библиотеки с помощью команды: `npm i`;
+7. Далее запускаем проект с помощью команды: `npm run start`;
+8. Проект запущен ! :)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Автор данного проекта - Alexandr Vashchekin
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
